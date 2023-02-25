@@ -4,6 +4,7 @@ from django.utils import timezone
 from .shared_utils import get_duration
 from .shared_utils import format_duration
 from .shared_utils import format_entry
+from .shared_utils import is_visit_long
 
 
 def storage_information_view(request):
@@ -16,6 +17,7 @@ def storage_information_view(request):
         entry = {'who_entered': f'{visit.passcard}',
             'entered_at': f'{format_entry(entered_at_local)}',
             'duration': f'{result}',
+            'is_strage': f'{is_visit_long(visit)}'
         }        
         non_closed_visits.append(entry)
     context = {
