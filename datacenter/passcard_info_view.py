@@ -1,18 +1,9 @@
+import sys
 from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
-from django.utils import timezone
-import django
 from django.shortcuts import get_object_or_404
-
-def get_duration(visit):
-    visit_entered_at_local = timezone.localtime(visit.entered_at)
-    if visit.leaved_at == None:
-        delta = django.utils.timezone.localtime() - visit_entered_at_local
-    else:
-        visit_leaved_at_local = timezone.localtime(visit.leaved_at)
-        delta = visit_leaved_at_local - visit_entered_at_local
-    return delta
+from .shared_utils import get_duration
 
 def passcard_info_view(request, passcode):
     passcard = get_object_or_404(Passcard, passcode=passcode)
