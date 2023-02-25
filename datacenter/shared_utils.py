@@ -10,9 +10,11 @@ def get_duration(visit):
     return delta
 
 def format_duration(duration):
-    hours = duration//3600
-    minutes = (duration%3600)//60
-    return f'{hours}ч {minutes}мин'    
+    hours = int(duration//3600)
+    minutes = int((duration%3600)//60)
+    seconds = int((duration%3600)%60)
+    total_result = f'{hours} ч {minutes} мин {seconds} сек'
+    return total_result    
 
 def format_entry(time):
     month_litteral = ['Января','Февраля','Марта','Апреля','Мая','Июня','Июля','Августа','Сентября','Октября','Ноября','Декабря']

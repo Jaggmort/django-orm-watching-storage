@@ -13,7 +13,7 @@ def passcard_info_view(request, passcode):
     for visit in visits:
         if visit.leaved_at!=None:
             is_strange = False
-            if (visit.leaved_at-visit.entered_at).seconds >= time_difference:
+            if (visit.leaved_at-visit.entered_at).total_seconds() >= time_difference:
                 is_strange = True
         this_passcard_visit = {
                 'entered_at': f'{visit.entered_at}',
