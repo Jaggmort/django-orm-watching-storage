@@ -3,7 +3,7 @@ from django.utils import timezone
 def get_duration(visit):
     visit_entered_at_local = timezone.localtime(visit.entered_at)
     if visit.leaved_at == None:
-        delta = django.utils.timezone.localtime() - visit_entered_at_local
+        delta = timezone.localtime() - visit_entered_at_local
     else:
         visit_leaved_at_local = timezone.localtime(visit.leaved_at)
         delta = visit_leaved_at_local - visit_entered_at_local
