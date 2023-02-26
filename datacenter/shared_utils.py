@@ -31,7 +31,6 @@ def format_entry(time):
 def is_visit_long(visit):
     time_difference = 3600
     is_strange = False
-    if visit.leaved_at!=None:    
-        if (visit.leaved_at-visit.entered_at).total_seconds() >= time_difference:
-            is_strange = True
+    if int(get_duration(visit).total_seconds()) >= time_difference:
+        is_strange = True
     return(is_strange)    
