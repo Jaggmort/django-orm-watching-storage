@@ -1,6 +1,6 @@
 from datacenter.models import Visit
-from django.shortcuts import render
 from django.utils import timezone
+from django.shortcuts import render
 from .shared_utils import get_duration
 from .shared_utils import format_duration
 from .shared_utils import format_entry
