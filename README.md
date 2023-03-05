@@ -9,6 +9,10 @@ pip install -r requirements.txt
 
 ### How to use ###
 
+U need to set variables in .env file:
+`ENGINE` - DB_Engine, `HOST` - DB_Host, `PORT` - DB_Port, `NAME` - DB_Name, `USER` - DB_User,
+`PASSWORD` - DB_Password, `SECRET_KEY` - Your secret key, `DEBUG` - True or False, `ALLOWED_HOSTS`
+
 ```python
 python main.py
 ```
