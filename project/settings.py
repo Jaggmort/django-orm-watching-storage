@@ -3,33 +3,35 @@ from environs import Env
 
 env = Env()
 env.read_env()
-engine = env('ENGINE')
-host = env('HOST')
-port = env('PORT')
-name = env('NAME')
-user = env('USER')
-password = env('PASSWORD')
+os.environ.setdefault('DEBUG', 'True')
+os.environ.setdefault('ALLOWED_HOSTS', '[*]')
+os.environ.setdefault('SECRET_KEY', 'SECRET_KEY')
+db_engine = env('ENGINE')
+db_host = env('HOST')
+db_port = env('PORT')
+db_name = env('NAME')
+db_user = env('USER')
+db_password = env('PASSWORD')
 SECRET_KEY = env('SECRET_KEY')
+allowed_hosts = env('ALLOWED_HOSTS')
+DEBUG = env.bool('DEBUG')
 
 DATABASES = {
     'default': {
-        'ENGINE': engine,
-        'HOST': host,
-        'PORT': port,
-        'NAME': name,
-        'USER': user,
-        'PASSWORD': password,
+        'ENGINE': db_engine,
+        'HOST': db_host,
+        'PORT': db_port,
+        'NAME': db_name,
+        'USER': db_user,
+        'PASSWORD': db_password,
     }
 }
 
 INSTALLED_APPS = ['datacenter']
 
-
-DEBUG = env.bool('DEBUG')
-
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = allowed_hosts
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,6 +43,7 @@ TEMPLATES = [
     },
 ]
 
+DEBUG = DEBUG
 
 USE_L10N = True
 
